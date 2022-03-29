@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: metricsapp
+  name: metricsapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: metricsapp
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: metricsapp
+      annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/port: '80'
+    spec:
+      containers:
+      - image: kidc-lxn01-ws:5000/metricsapp:latest
+        name: metricsapp
+        resources: {}
+status: {}
